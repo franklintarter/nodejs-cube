@@ -1,27 +1,27 @@
 require("./array-methods");
+const Face = require("./face");
 
 const { c, moves } = require("./constants");
 
-const createFace = (color) => [
-  color,
-  color,
-  color,
-  color,
-  color,
-  color,
-  color,
-  color,
-  color,
-];
-
 module.exports = class Cube {
   constructor() {
-    this.front = createFace(c.W);
-    this.left = createFace(c.G);
-    this.back = createFace(c.Y);
-    this.right = createFace(c.B);
-    this.top = createFace(c.O);
-    this.bottom = createFace(c.R);
+    this.front = new Face(c.W);
+    this.left = new Face(c.G);
+    this.back = new Face(c.Y);
+    this.right = new Face(c.B);
+    this.top = new Face(c.O);
+    this.bottom = new Face(c.R);
+  }
+
+  solved() {
+    return (
+      this.front.solved() &&
+      this.left.solved() &&
+      this.right.solved() &&
+      this.top.solved() &&
+      this.back.solved() &&
+      this.bottom.solved()
+    );
   }
 
   spinBottom() {

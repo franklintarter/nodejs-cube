@@ -4,4 +4,4 @@ const cube = new Cube();
 
 randomMoves(1000).forEach((m) => cube.move(m));
 
-console.log(cube.front);
+// console.log(cube.front);

@@ -1,5 +1,8 @@
+const Cube = require("../src/cube");
+
 describe("cube", () => {
-  it("Does good things", () => {
-    expect(true).toBe(true);
+  it("starts out solved", () => {
+    const cube = new Cube();
+    expect(cube.solved()).toBe(true);
   });
 });
