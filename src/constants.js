@@ -3,8 +3,8 @@ module.exports.moves = {
   FLIP: "FLIP",
   ROTATE: "ROTATE",
   SPIN_BOTTOM: "SPIN_BOTTOM",
-  SPIN_TOP: "SPIN_TOP"
-}
+  SPIN_TOP: "SPIN_TOP",
+};
 
 module.exports.c = {
   W: "W",
@@ -12,5 +12,5 @@ module.exports.c = {
   G: "G",
   R: "R",
   O: "O",
-  B: "B"
-}
+  B: "B",
+};

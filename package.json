@@ -10,8 +10,10 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "jasmine": "^3.5.0",
+    "prettier": "2.0.5",
     "nodemon": "^2.0.3"
   }
 }
