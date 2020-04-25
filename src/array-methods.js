@@ -1,3 +1,10 @@
+// |0|1|2|
+// |3|4|5|
+// |6|7|8|
+
+// |6|3|0|
+// |7|4|1|
+// |8|5|2|
 Array.prototype.transpose = function () {
   return [
     this[6],
@@ -12,6 +19,13 @@ Array.prototype.transpose = function () {
   ];
 };
 
+// |0|1|2|
+// |3|4|5|
+// |6|7|8|
+
+// |2|5|8|
+// |1|4|7|
+// |0|3|6|
 Array.prototype.reverseTranspose = function () {
   return [
     this[2],
@@ -77,5 +91,23 @@ Array.prototype.setRight = function (other) {
     this[6],
     this[7],
     other[8],
+  ];
+};
+
+Array.prototype.takeLeft = function () {
+  return [this[0], this[3], this[6]];
+};
+
+Array.prototype.setLeft = function (other) {
+  return [
+    other[0],
+    this[1],
+    this[2],
+    other[1],
+    this[4],
+    this[5],
+    other[2],
+    this[7],
+    this[8],
   ];
 };
