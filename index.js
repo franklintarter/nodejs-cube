@@ -30,8 +30,6 @@ Array.prototype.setRight = function (other) {
   return [this[0], this[1], other[0], this[3], this[4], other[1], this[6], this[7], other[8]]
 }
 
-// const transpose = (a) =>
-
 const moves = {
   TURN: "TURN",
   FLIP: "FLIP",
@@ -40,9 +38,7 @@ const moves = {
   SPIN_TOP: "SPIN_TOP"
 }
 
-const movesArr = [
-  moves.SPIN_TOP, moves.TURN, moves.FLIP, moves.ROTATE, moves.SPIN_BOTTOM
-]
+const movesArr = Object.keys(moves)
 
 const randomMoves = []
 for(let i = 0; i < 1000; i++) {
@@ -69,7 +65,7 @@ const to = {
 }
 
 class Cube {
-  front = createFace(c.W) // 0-front
+  front = createFace(c.W)
   left = createFace(c.G)
   back = createFace(c.Y)
   right = createFace(c.B)
@@ -156,10 +152,6 @@ class Cube {
         this.spinTop()
       default:
     }
-  }
-
-  showFace () {
-    return this.front
   }
 }
 
