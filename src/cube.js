@@ -15,12 +15,14 @@ const createFace = (color) => [
 ];
 
 module.exports = class Cube {
-  front = createFace(c.W);
-  left = createFace(c.G);
-  back = createFace(c.Y);
-  right = createFace(c.B);
-  top = createFace(c.O);
-  bottom = createFace(c.R);
+  constructor() {
+    this.front = createFace(c.W);
+    this.left = createFace(c.G);
+    this.back = createFace(c.Y);
+    this.right = createFace(c.B);
+    this.top = createFace(c.O);
+    this.bottom = createFace(c.R);
+  }
 
   spinBottom() {
     this.bottom = this.bottom.transpose();
@@ -94,12 +96,16 @@ module.exports = class Cube {
     switch (move) {
       case moves.TURN:
         this.turn();
+        break;
       case moves.FLIP:
         this.flip();
+        break;
       case moves.SPIN_BOTTOM:
         this.spinBottom();
+        break;
       case moves.SPIN_TOP:
         this.spinTop();
+        break;
       default:
     }
   }
