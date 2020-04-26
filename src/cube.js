@@ -13,14 +13,14 @@ module.exports = class Cube {
     this.bottom = new Face(c.R);
   }
 
-  solved() {
+  isSolved() {
     return (
-      this.front.solved() &&
-      this.left.solved() &&
-      this.right.solved() &&
-      this.top.solved() &&
-      this.back.solved() &&
-      this.bottom.solved()
+      this.front.isSolved() &&
+      this.left.isSolved() &&
+      this.right.isSolved() &&
+      this.top.isSolved() &&
+      this.back.isSolved() &&
+      this.bottom.isSolved()
     );
   }
 
