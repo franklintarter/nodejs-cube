@@ -1,4 +1,3 @@
-require("./array-methods");
 const Face = require("./face");
 
 const { c, moves } = require("./constants");
