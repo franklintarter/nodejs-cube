@@ -1,6 +1,6 @@
 const Face = require("./face");
-
 const { c, moves } = require("./constants");
+const randomMoves = require("./random-moves");
 
 module.exports = class Cube {
   constructor() {
@@ -121,5 +121,10 @@ module.exports = class Cube {
         break;
       default:
     }
+  }
+
+  randomize() {
+    const moves = randomMoves(1000);
+    moves.forEach((m) => this.move(m));
   }
 };

@@ -114,4 +114,10 @@ describe("cube", () => {
       c.W,
     ]);
   });
+
+  it("is not solved when randomized", () => {
+    const cube = new Cube();
+    cube.randomize();
+    expect(cube.isSolved()).toBe(false);
+  });
 });

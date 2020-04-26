@@ -1,7 +1,11 @@
 const Cube = require("./src/cube");
-const randomMoves = require("./src/random-moves");
+const render = require("./src/renderer");
+// const randomMoves = require("./src/random-moves");
 const cube = new Cube();
+cube.randomize();
 
-randomMoves(1000).forEach((m) => cube.move(m));
+render(cube);
+
+// randomMoves(1000).forEach((m) => cube.move(m));
 
 // console.log(cube.front);
