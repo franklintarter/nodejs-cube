@@ -50,7 +50,7 @@ describe("cube", () => {
   it("spins bottom", () => {
     const cube = new Cube();
     const leftColor = cube.left.color;
-    cube.spinBottom();
+    cube.spinDown();
     expect(cube.front.toArray()).toEqual([
       c.W,
       c.W,
@@ -67,7 +67,7 @@ describe("cube", () => {
   it("spins top", () => {
     const cube = new Cube();
     const leftColor = cube.left.color;
-    cube.spinTop();
+    cube.spinUp();
     expect(cube.front.toArray()).toEqual([
       leftColor,
       leftColor,

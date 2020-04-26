@@ -23,7 +23,7 @@ module.exports = class Cube {
     );
   }
 
-  spinBottom() {
+  spinDown() {
     this.bottom.transpose();
 
     const right = this.front.takeBottom();
@@ -37,7 +37,7 @@ module.exports = class Cube {
     this.front.setBottom(front);
   }
 
-  spinTop() {
+  spinUp() {
     this.top.reverseTranspose();
 
     const right = this.front.takeTop();
@@ -114,10 +114,16 @@ module.exports = class Cube {
         this.flip();
         break;
       case moves.SPIN_BOTTOM:
-        this.spinBottom();
+        this.spinDown();
         break;
       case moves.SPIN_TOP:
-        this.spinTop();
+        this.spinUp();
+        break;
+      case moves.SPIN_RIGHT:
+        this.spinRight();
+        break;
+      case moves.SPIN_LEFT:
+        this.spinLeft();
         break;
       default:
     }
