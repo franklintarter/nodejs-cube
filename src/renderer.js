@@ -48,36 +48,36 @@ function writeEndLine(str) {
 
 function two(cube) {
   write("      .");
-  writeColor(cube.top.topLeft, "*******************");
+  writeColor(cube.up.upLeft, "*******************");
   write(".");
-  writeColor(cube.top.top, "*******************");
+  writeColor(cube.up.up, "*******************");
   write(".");
-  writeColor(cube.top.topRight, "*********************");
+  writeColor(cube.up.upRight, "*********************");
   writeEndLine("|");
 }
 
 function three(cube) {
   write("    .");
-  writeColor(cube.top.left, "*******************");
+  writeColor(cube.up.left, "*******************");
   write(".");
-  writeColor(cube.top.center, "*******************");
+  writeColor(cube.up.center, "*******************");
   write(".");
-  writeColor(cube.top.right, "********************");
+  writeColor(cube.up.right, "********************");
   write(".");
-  writeColor(cube.right.topRight, "**");
+  writeColor(cube.right.upRight, "**");
   writeEndLine("|");
 }
 
 function four(cube) {
   write("  .");
-  writeColor(cube.top.bottomLeft, "*******************");
+  writeColor(cube.up.downLeft, "*******************");
   write(".");
-  writeColor(cube.top.bottom, "*******************");
+  writeColor(cube.up.down, "*******************");
   write(".");
-  writeColor(cube.top.bottomRight, "*******************");
+  writeColor(cube.up.downRight, "*******************");
   write(".");
-  writeColor(cube.right.top, " **");
-  writeColor(cube.right.topRight, "**");
+  writeColor(cube.right.up, " **");
+  writeColor(cube.right.upRight, "**");
   writeEndLine("|");
 }
 
@@ -85,9 +85,9 @@ function five(cube) {
   process.stdout.write(
     "|-------------------+-------------------+-------------------+ "
   );
-  process.stdout.write(chalk.hex(toHex(cube.right.topLeft))("**"));
-  process.stdout.write(chalk.hex(toHex(cube.right.top))("**"));
-  process.stdout.write(chalk.hex(toHex(cube.right.topRight))("**"));
+  process.stdout.write(chalk.hex(toHex(cube.right.upLeft))("**"));
+  process.stdout.write(chalk.hex(toHex(cube.right.up))("**"));
+  process.stdout.write(chalk.hex(toHex(cube.right.upRight))("**"));
   process.stdout.write("|" + pad);
 }
 
@@ -102,47 +102,47 @@ function frontFace(left, center, right) {
 }
 
 function six(cube) {
-  frontFace(cube.front.topLeft, cube.front.top, cube.front.topRight);
-  writeColor(cube.right.topLeft, "**");
-  writeColor(cube.right.top, "**");
-  writeColor(cube.right.topRight, "**");
+  frontFace(cube.front.upLeft, cube.front.up, cube.front.upRight);
+  writeColor(cube.right.upLeft, "**");
+  writeColor(cube.right.up, "**");
+  writeColor(cube.right.upRight, "**");
   writeEndLine("|");
 }
 
 function seven(cube) {
-  frontFace(cube.front.topLeft, cube.front.top, cube.front.topRight);
-  writeColor(cube.right.topLeft, "**");
-  writeColor(cube.right.top, "**");
-  writeColor(cube.right.topRight, "**");
+  frontFace(cube.front.upLeft, cube.front.up, cube.front.upRight);
+  writeColor(cube.right.upLeft, "**");
+  writeColor(cube.right.up, "**");
+  writeColor(cube.right.upRight, "**");
   writeEndLine("|");
 }
 
 function eight(cube) {
-  frontFace(cube.front.topLeft, cube.front.top, cube.front.topRight);
-  writeColor(cube.right.topLeft, "**");
-  writeColor(cube.right.top, "**");
-  writeColor(cube.right.topRight, "**");
+  frontFace(cube.front.upLeft, cube.front.up, cube.front.upRight);
+  writeColor(cube.right.upLeft, "**");
+  writeColor(cube.right.up, "**");
+  writeColor(cube.right.upRight, "**");
   writeEndLine("|");
 }
 
 function nine(cube) {
-  frontFace(cube.front.topLeft, cube.front.top, cube.front.topRight);
-  writeColor(cube.right.topLeft, "**");
-  writeColor(cube.right.top, "**");
+  frontFace(cube.front.upLeft, cube.front.up, cube.front.upRight);
+  writeColor(cube.right.upLeft, "**");
+  writeColor(cube.right.up, "**");
   write(". ");
   writeEndLine("|");
 }
 
 function ten(cube) {
-  frontFace(cube.front.topLeft, cube.front.top, cube.front.topRight);
-  writeColor(cube.right.topLeft, "**");
+  frontFace(cube.front.upLeft, cube.front.up, cube.front.upRight);
+  writeColor(cube.right.upLeft, "**");
   write(". ");
   writeColor(cube.right.right, "**");
   writeEndLine("|");
 }
 
 function eleven(cube) {
-  frontFace(cube.front.topLeft, cube.front.top, cube.front.topRight);
+  frontFace(cube.front.upLeft, cube.front.up, cube.front.upRight);
   write(". ");
   writeColor(cube.right.center, "**");
   writeColor(cube.right.right, "**");
@@ -193,65 +193,65 @@ function seventeen(cube) {
   frontFace(cube.front.left, cube.front.center, cube.front.right);
   writeColor(cube.right.left, "**");
   write(". ");
-  writeColor(cube.right.bottomRight, "**");
+  writeColor(cube.right.downRight, "**");
   writeEndLine("|");
 }
 
 function eighteen(cube) {
   frontFace(cube.front.left, cube.front.center, cube.front.right);
   write(". ");
-  writeColor(cube.right.bottom, "**");
-  writeColor(cube.right.bottomRight, "**");
+  writeColor(cube.right.down, "**");
+  writeColor(cube.right.downRight, "**");
   writeEndLine("|");
 }
 
 function nineteen(cube) {
   write("+-------------------+-------------------+-------------------+ ");
-  writeColor(cube.right.bottomLeft, "**");
-  writeColor(cube.right.bottom, "**");
-  writeColor(cube.right.bottomRight, "**");
+  writeColor(cube.right.downLeft, "**");
+  writeColor(cube.right.down, "**");
+  writeColor(cube.right.downRight, "**");
   writeEndLine("|");
 }
 
 function twenty(cube) {
-  frontFace(cube.front.bottomLeft, cube.front.bottom, cube.front.bottomRight);
-  writeColor(cube.right.bottomLeft, "**");
-  writeColor(cube.right.bottom, "**");
-  writeColor(cube.right.bottomRight, "**");
+  frontFace(cube.front.downLeft, cube.front.down, cube.front.downRight);
+  writeColor(cube.right.downLeft, "**");
+  writeColor(cube.right.down, "**");
+  writeColor(cube.right.downRight, "**");
   writeEndLine("|");
 }
 
 function twentyone(cube) {
-  frontFace(cube.front.bottomLeft, cube.front.bottom, cube.front.bottomRight);
-  writeColor(cube.right.bottomLeft, "**");
-  writeColor(cube.right.bottom, "**");
-  writeColor(cube.right.bottomRight, "**");
+  frontFace(cube.front.downLeft, cube.front.down, cube.front.downRight);
+  writeColor(cube.right.downLeft, "**");
+  writeColor(cube.right.down, "**");
+  writeColor(cube.right.downRight, "**");
   writeEndLine("|");
 }
 
 function twentytwo(cube) {
-  frontFace(cube.front.bottomLeft, cube.front.bottom, cube.front.bottomRight);
-  writeColor(cube.right.bottomLeft, "**");
-  writeColor(cube.right.bottom, "**");
-  writeColor(cube.right.bottomRight, "**");
+  frontFace(cube.front.downLeft, cube.front.down, cube.front.downRight);
+  writeColor(cube.right.downLeft, "**");
+  writeColor(cube.right.down, "**");
+  writeColor(cube.right.downRight, "**");
   writeEndLine("|");
 }
 
 function twentythree(cube) {
-  frontFace(cube.front.bottomLeft, cube.front.bottom, cube.front.bottomRight);
-  writeColor(cube.right.bottomLeft, "**");
-  writeColor(cube.right.bottom, "**");
+  frontFace(cube.front.downLeft, cube.front.down, cube.front.downRight);
+  writeColor(cube.right.downLeft, "**");
+  writeColor(cube.right.down, "**");
   writeEndLine(".  ");
 }
 
 function twentyfour(cube) {
-  frontFace(cube.front.bottomLeft, cube.front.bottom, cube.front.bottomRight);
-  writeColor(cube.right.bottomLeft, "**");
+  frontFace(cube.front.downLeft, cube.front.down, cube.front.downRight);
+  writeColor(cube.right.downLeft, "**");
   writeEndLine(".    ");
 }
 
 function twentyfive(cube) {
-  frontFace(cube.front.bottomLeft, cube.front.bottom, cube.front.bottomRight);
+  frontFace(cube.front.downLeft, cube.front.down, cube.front.downRight);
   writeEndLine(".      ");
 }
 

@@ -6,9 +6,9 @@ describe("Face", () => {
     expect(face.isSolved()).toBe(true);
   });
 
-  it("can set top", () => {
+  it("can set up", () => {
     const face = new Face("w");
-    face.setTop({ left: "a", center: "b", right: "c" });
+    face.setUp({ left: "a", center: "b", right: "c" });
     expect(face.toArray()).toEqual([
       "a",
       "b",
@@ -22,9 +22,9 @@ describe("Face", () => {
     ]);
   });
 
-  it("can set bottom", () => {
+  it("can set down", () => {
     const face = new Face("w");
-    face.setBottom({ left: "a", center: "b", right: "c" });
+    face.setDown({ left: "a", center: "b", right: "c" });
     expect(face.toArray()).toEqual([
       "w",
       "w",
@@ -40,7 +40,7 @@ describe("Face", () => {
 
   it("can set right", () => {
     const face = new Face("w");
-    face.setRight({ top: "a", center: "b", bottom: "c" });
+    face.setRight({ up: "a", center: "b", down: "c" });
     expect(face.toArray()).toEqual([
       "w",
       "w",
@@ -56,7 +56,7 @@ describe("Face", () => {
 
   it("can set left", () => {
     const face = new Face("w");
-    face.setLeft({ top: "a", center: "b", bottom: "c" });
+    face.setLeft({ up: "a", center: "b", down: "c" });
     expect(face.toArray()).toEqual([
       "a",
       "w",
@@ -72,7 +72,7 @@ describe("Face", () => {
 
   it("can transpose", () => {
     const face = new Face("w");
-    face.setTop({ left: "a", center: "b", right: "c" });
+    face.setUp({ left: "a", center: "b", right: "c" });
     face.transpose();
     expect(face.toArray()).toEqual([
       "w",
@@ -89,7 +89,7 @@ describe("Face", () => {
 
   it("can reverse transpose", () => {
     const face = new Face("w");
-    face.setTop({ left: "a", center: "b", right: "c" });
+    face.setUp({ left: "a", center: "b", right: "c" });
     face.reverseTranspose();
     expect(face.toArray()).toEqual([
       "c",
@@ -104,27 +104,27 @@ describe("Face", () => {
     ]);
   });
 
-  it("can take bottom", () => {
+  it("can take down", () => {
     const face = new Face("w");
-    face.setBottom({ left: "a", center: "b", right: "c" });
-    expect(face.takeBottom()).toEqual({ left: "a", center: "b", right: "c" });
+    face.setDown({ left: "a", center: "b", right: "c" });
+    expect(face.takeDown()).toEqual({ left: "a", center: "b", right: "c" });
   });
 
-  it("can take top", () => {
+  it("can take up", () => {
     const face = new Face("w");
-    face.setTop({ left: "a", center: "b", right: "c" });
-    expect(face.takeTop()).toEqual({ left: "a", center: "b", right: "c" });
+    face.setUp({ left: "a", center: "b", right: "c" });
+    expect(face.takeUp()).toEqual({ left: "a", center: "b", right: "c" });
   });
 
   it("can take right", () => {
     const face = new Face("w");
-    face.setRight({ top: "a", center: "b", bottom: "c" });
-    expect(face.takeRight()).toEqual({ top: "a", center: "b", bottom: "c" });
+    face.setRight({ up: "a", center: "b", down: "c" });
+    expect(face.takeRight()).toEqual({ up: "a", center: "b", down: "c" });
   });
 
   it("can take left", () => {
     const face = new Face("w");
-    face.setLeft({ top: "a", center: "b", bottom: "c" });
-    expect(face.takeLeft()).toEqual({ top: "a", center: "b", bottom: "c" });
+    face.setLeft({ up: "a", center: "b", down: "c" });
+    expect(face.takeLeft()).toEqual({ up: "a", center: "b", down: "c" });
   });
 });

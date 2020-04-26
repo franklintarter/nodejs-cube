@@ -1,6 +1,6 @@
 const Face = require("./face");
 const { c, moves } = require("./constants");
-const randomMoves = require("./random-moves");
+const { all } = require("./random-moves");
 
 module.exports = class Cube {
   constructor() {
@@ -8,8 +8,12 @@ module.exports = class Cube {
     this.left = new Face(c.G);
     this.back = new Face(c.Y);
     this.right = new Face(c.B);
-    this.top = new Face(c.O);
-    this.bottom = new Face(c.R);
+    this.up = new Face(c.O);
+    this.down = new Face(c.R);
+  }
+
+  solveCross() {
+    while (!this.front.isCrossSolved()) {}
   }
 
   isSolved() {
@@ -17,69 +21,71 @@ module.exports = class Cube {
       this.front.isSolved() &&
       this.left.isSolved() &&
       this.right.isSolved() &&
-      this.top.isSolved() &&
+      this.up.isSolved() &&
       this.back.isSolved() &&
-      this.bottom.isSolved()
+      this.down.isSolved()
     );
   }
 
-  spinDown() {
-    this.bottom.transpose();
+  turnDown() {
+    this.down.transpose();
 
-    const right = this.front.takeBottom();
-    const back = this.right.takeBottom();
-    const left = this.back.takeBottom();
-    const front = this.left.takeBottom();
+    const right = this.front.takeDown();
+    const back = this.right.takeDown();
+    const left = this.back.takeDown();
+    const front = this.left.takeDown();
 
-    this.right.setBottom(right);
-    this.left.setBottom(left);
-    this.back.setBottom(back);
-    this.front.setBottom(front);
+    this.right.setDown(right);
+    this.left.setDown(left);
+    this.back.setDown(back);
+    this.front.setDown(front);
   }
 
-  spinUp() {
-    this.top.reverseTranspose();
+  turnUp() {
+    this.up.transpose();
 
-    const right = this.front.takeTop();
-    const back = this.right.takeTop();
-    const left = this.back.takeTop();
-    const front = this.left.takeTop();
+    const right = this.back.takeUp();
+    const back = this.left.takeUp();
+    const left = this.front.takeUp();
+    const front = this.right.takeUp();
 
-    this.right.setTop(right);
-    this.left.setTop(left);
-    this.back.setTop(back);
-    this.front.setTop(front);
+    this.right.setUp(right);
+    this.left.setUp(left);
+    this.back.setUp(back);
+    this.front.setUp(front);
   }
 
-  spinRight() {
-    this.right.reverseTranspose();
+  turnRight() {
+    this.right.transpose();
 
-    const front = this.top.takeRight();
-    const top = this.back.takeRight();
-    const back = this.bottom.takeRight();
-    const bottom = this.front.takeRight();
+    const front = this.down.takeRight();
+    const up = this.front.takeRight();
+    const back = this.up.takeRight();
+    const down = this.back.takeRight();
 
     this.front.setRight(front);
-    this.top.setRight(top);
+    this.up.setRight(up);
     this.back.setRight(back);
-    this.bottom.setRight(bottom);
+    this.down.setRight(down);
   }
 
-  spinLeft() {
+  turnLeft() {
     this.left.transpose();
 
-    const front = this.top.takeLeft();
-    const top = this.back.takeLeft();
-    const back = this.bottom.takeLeft();
-    const bottom = this.front.takeLeft();
+    const front = this.up.takeLeft();
+    const up = this.back.takeLeft();
+    const back = this.down.takeLeft();
+    const down = this.front.takeLeft();
 
     this.front.setLeft(front);
-    this.top.setLeft(top);
+    this.up.setLeft(up);
     this.back.setLeft(back);
-    this.bottom.setLeft(bottom);
+    this.down.setLeft(down);
   }
 
-  turn() {
+  // TODO turn front turn back
+
+  rotateRight() {
     const right = this.front;
     const front = this.left;
     const left = this.back;
@@ -88,18 +94,18 @@ module.exports = class Cube {
     this.left = left;
     this.back = back;
     this.right = right;
-    this.top.reverseTranspose();
-    this.bottom.transpose();
+    this.up.reverseTranspose();
+    this.down.transpose();
   }
 
-  flip() {
-    const front = this.top;
-    const bottom = this.front;
-    const top = this.back;
-    const back = this.bottom;
+  rotate() {
+    const front = this.up;
+    const down = this.front;
+    const up = this.back;
+    const back = this.down;
     this.front = front;
-    this.top = top;
-    this.bottom = bottom;
+    this.up = up;
+    this.down = down;
     this.back = back;
     this.left.transpose();
     this.right.reverseTranspose();
@@ -107,30 +113,30 @@ module.exports = class Cube {
 
   move(move) {
     switch (move) {
-      case moves.TURN:
-        this.turn();
+      case moves.TURN_DOWN:
+        this.turnDown();
         break;
-      case moves.FLIP:
-        this.flip();
+      case moves.TURN_UP:
+        this.turnUp();
         break;
-      case moves.SPIN_BOTTOM:
-        this.spinDown();
+      case moves.TURN_RIGHT:
+        this.turnRight();
         break;
-      case moves.SPIN_TOP:
-        this.spinUp();
+      case moves.TURN_LEFT:
+        this.turnLeft();
         break;
-      case moves.SPIN_RIGHT:
-        this.spinRight();
+      case moves.ROTATE_RIGHT:
+        this.rotateRight();
         break;
-      case moves.SPIN_LEFT:
-        this.spinLeft();
+      case moves.ROTATE:
+        this.rotate();
         break;
       default:
     }
   }
 
   randomize() {
-    const moves = randomMoves(1000);
+    const moves = all(1000);
     moves.forEach((m) => this.move(m));
   }
 };

@@ -1,39 +1,47 @@
 module.exports = class Face {
-  topLeft;
-  top;
-  topRight;
+  upLeft;
+  up;
+  upRight;
   left;
   center;
   right;
-  bottomLeft;
-  bottom;
-  bottomRight;
+  downLeft;
+  down;
+  downRight;
 
   color;
 
   constructor(color) {
-    this.topLeft = color;
-    this.top = color;
-    this.topRight = color;
+    this.upLeft = color;
+    this.up = color;
+    this.upRight = color;
     this.left = color;
     this.center = color;
     this.right = color;
-    this.bottomLeft = color;
-    this.bottom = color;
-    this.bottomRight = color;
+    this.downLeft = color;
+    this.down = color;
+    this.downRight = color;
     this.color = color;
   }
 
   *[Symbol.iterator]() {
-    yield this.topLeft;
-    yield this.top;
-    yield this.topRight;
+    yield this.upLeft;
+    yield this.up;
+    yield this.upRight;
     yield this.left;
     yield this.center;
     yield this.right;
-    yield this.bottomLeft;
-    yield this.bottom;
-    yield this.bottomRight;
+    yield this.downLeft;
+    yield this.down;
+    yield this.downRight;
+  }
+
+  sides() {
+    return [this.up, this.left, this.right, this.down];
+  }
+
+  isCrossSolved() {
+    return this.sides().every((s) => s === this.color);
   }
 
   isSolved() {
@@ -44,97 +52,97 @@ module.exports = class Face {
     return Array.from(this);
   }
 
-  setTop({ left, center, right }) {
-    this.topLeft = left;
-    this.top = center;
-    this.topRight = right;
+  setUp({ left, center, right }) {
+    this.upLeft = left;
+    this.up = center;
+    this.upRight = right;
   }
 
-  setBottom({ left, center, right }) {
-    this.bottomLeft = left;
-    this.bottom = center;
-    this.bottomRight = right;
+  setDown({ left, center, right }) {
+    this.downLeft = left;
+    this.down = center;
+    this.downRight = right;
   }
 
-  setRight({ top, center, bottom }) {
-    this.topRight = top;
+  setRight({ up, center, down }) {
+    this.upRight = up;
     this.right = center;
-    this.bottomRight = bottom;
+    this.downRight = down;
   }
 
-  setLeft({ top, center, bottom }) {
-    this.topLeft = top;
+  setLeft({ up, center, down }) {
+    this.upLeft = up;
     this.left = center;
-    this.bottomLeft = bottom;
+    this.downLeft = down;
   }
 
-  takeBottom() {
+  takeDown() {
     return {
-      left: this.bottomLeft,
-      center: this.bottom,
-      right: this.bottomRight,
+      left: this.downLeft,
+      center: this.down,
+      right: this.downRight,
     };
   }
 
-  takeTop() {
+  takeUp() {
     return {
-      left: this.topLeft,
-      center: this.top,
-      right: this.topRight,
+      left: this.upLeft,
+      center: this.up,
+      right: this.upRight,
     };
   }
 
   takeRight() {
     return {
-      top: this.topRight,
+      up: this.upRight,
       center: this.right,
-      bottom: this.bottomRight,
+      down: this.downRight,
     };
   }
 
   takeLeft() {
     return {
-      top: this.topLeft,
+      up: this.upLeft,
       center: this.left,
-      bottom: this.bottomLeft,
+      down: this.downLeft,
     };
   }
 
   transpose() {
-    const nextTopLeft = this.bottomLeft;
-    const nextTop = this.left;
-    const nextTopRight = this.topLeft;
-    const nextleft = this.bottom;
-    const nextRight = this.top;
-    const nextBottomLeft = this.bottomRight;
-    const nextBottom = this.right;
-    const nextBottomRight = this.topRight;
-    this.bottomLeft = nextBottomLeft;
+    const nextUpLeft = this.downLeft;
+    const nextUp = this.left;
+    const nextUpRight = this.upLeft;
+    const nextleft = this.down;
+    const nextRight = this.up;
+    const nextDownLeft = this.downRight;
+    const nextDown = this.right;
+    const nextDownRight = this.upRight;
+    this.downLeft = nextDownLeft;
     this.left = nextleft;
-    this.topLeft = nextTopLeft;
-    this.bottom = nextBottom;
-    this.top = nextTop;
-    this.bottomRight = nextBottomRight;
+    this.upLeft = nextUpLeft;
+    this.down = nextDown;
+    this.up = nextUp;
+    this.downRight = nextDownRight;
     this.right = nextRight;
-    this.topRight = nextTopRight;
+    this.upRight = nextUpRight;
   }
 
   reverseTranspose() {
-    const nextTopLeft = this.topRight;
-    const nextTop = this.right;
-    const nextTopRight = this.bottomRight;
-    const nextleft = this.top;
-    const nextRight = this.bottom;
-    const nextBottomLeft = this.topLeft;
-    const nextBottom = this.left;
-    const nextBottomRight = this.bottomLeft;
-    this.bottomLeft = nextBottomLeft;
+    const nextUpLeft = this.upRight;
+    const nextUp = this.right;
+    const nextUpRight = this.downRight;
+    const nextleft = this.up;
+    const nextRight = this.down;
+    const nextDownLeft = this.upLeft;
+    const nextDown = this.left;
+    const nextDownRight = this.downLeft;
+    this.downLeft = nextDownLeft;
     this.left = nextleft;
-    this.topLeft = nextTopLeft;
-    this.bottom = nextBottom;
-    this.top = nextTop;
-    this.bottomRight = nextBottomRight;
+    this.upLeft = nextUpLeft;
+    this.down = nextDown;
+    this.up = nextUp;
+    this.downRight = nextDownRight;
     this.right = nextRight;
-    this.topRight = nextTopRight;
+    this.upRight = nextUpRight;
   }
 };

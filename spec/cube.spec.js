@@ -7,50 +7,50 @@ describe("cube", () => {
     expect(cube.isSolved()).toBe(true);
   });
 
-  it("flips", () => {
+  it("rotates", () => {
     const cube = new Cube();
 
     const front = cube.front;
     const left = cube.left;
     const right = cube.right;
-    const bottom = cube.bottom;
+    const down = cube.down;
     const back = cube.back;
-    const top = cube.top;
+    const up = cube.up;
 
-    cube.flip();
+    cube.rotate();
 
-    expect(cube.front.color).toBe(top.color);
+    expect(cube.front.color).toBe(up.color);
     expect(cube.left.color).toBe(left.color);
     expect(cube.right.color).toBe(right.color);
-    expect(cube.back.color).toBe(bottom.color);
-    expect(cube.bottom.color).toBe(front.color);
-    expect(cube.top.color).toBe(back.color);
+    expect(cube.back.color).toBe(down.color);
+    expect(cube.down.color).toBe(front.color);
+    expect(cube.up.color).toBe(back.color);
   });
 
-  it("turns", () => {
+  it("rotates right", () => {
     const cube = new Cube();
 
     const front = cube.front;
     const left = cube.left;
     const right = cube.right;
-    const bottom = cube.bottom;
+    const down = cube.down;
     const back = cube.back;
-    const top = cube.top;
+    const up = cube.up;
 
-    cube.turn();
+    cube.rotateRight();
 
     expect(cube.front.color).toBe(left.color);
     expect(cube.left.color).toBe(back.color);
     expect(cube.right.color).toBe(front.color);
     expect(cube.back.color).toBe(right.color);
-    expect(cube.bottom.color).toBe(bottom.color);
-    expect(cube.top.color).toBe(top.color);
+    expect(cube.down.color).toBe(down.color);
+    expect(cube.up.color).toBe(up.color);
   });
 
-  it("spins bottom", () => {
+  it("turns down", () => {
     const cube = new Cube();
     const leftColor = cube.left.color;
-    cube.spinDown();
+    cube.turnDown();
     expect(cube.front.toArray()).toEqual([
       c.W,
       c.W,
@@ -64,14 +64,14 @@ describe("cube", () => {
     ]);
   });
 
-  it("spins top", () => {
+  it("turns up", () => {
     const cube = new Cube();
-    const leftColor = cube.left.color;
-    cube.spinUp();
+    const rightColor = cube.right.color;
+    cube.turnUp();
     expect(cube.front.toArray()).toEqual([
-      leftColor,
-      leftColor,
-      leftColor,
+      rightColor,
+      rightColor,
+      rightColor,
       c.W,
       c.W,
       c.W,
@@ -81,35 +81,35 @@ describe("cube", () => {
     ]);
   });
 
-  it("spins right", () => {
+  it("turns right", () => {
     const cube = new Cube();
-    const topColor = cube.top.color;
-    cube.spinRight();
+    const downColor = cube.down.color;
+    cube.turnRight();
     expect(cube.front.toArray()).toEqual([
       c.W,
       c.W,
-      topColor,
+      downColor,
       c.W,
       c.W,
-      topColor,
+      downColor,
       c.W,
       c.W,
-      topColor,
+      downColor,
     ]);
   });
 
-  it("spins left", () => {
+  it("turns left", () => {
     const cube = new Cube();
-    const topColor = cube.top.color;
-    cube.spinLeft();
+    const upColor = cube.up.color;
+    cube.turnLeft();
     expect(cube.front.toArray()).toEqual([
-      topColor,
+      upColor,
       c.W,
       c.W,
-      topColor,
+      upColor,
       c.W,
       c.W,
-      topColor,
+      upColor,
       c.W,
       c.W,
     ]);
