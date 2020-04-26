@@ -9,6 +9,8 @@ module.exports = class Face {
   #bottom;
   #bottomRight;
 
+  color;
+
   constructor(color) {
     this.#topLeft = color;
     this.#top = color;
@@ -19,6 +21,7 @@ module.exports = class Face {
     this.#bottomLeft = color;
     this.#bottom = color;
     this.#bottomRight = color;
+    this.color = color;
   }
 
   *[Symbol.iterator]() {
@@ -34,7 +37,7 @@ module.exports = class Face {
   }
 
   isSolved() {
-    return this.toArray().every((p) => p === this.#bottomLeft);
+    return this.toArray().every((p) => p === this.color);
   }
 
   toArray() {
@@ -63,6 +66,38 @@ module.exports = class Face {
     this.#topLeft = top;
     this.#left = center;
     this.#bottomLeft = bottom;
+  }
+
+  takeBottom() {
+    return {
+      left: this.#bottomLeft,
+      center: this.#bottom,
+      right: this.#bottomRight,
+    };
+  }
+
+  takeTop() {
+    return {
+      left: this.#topLeft,
+      center: this.#top,
+      right: this.#topRight,
+    };
+  }
+
+  takeRight() {
+    return {
+      top: this.#topRight,
+      center: this.#right,
+      bottom: this.#bottomRight,
+    };
+  }
+
+  takeLeft() {
+    return {
+      top: this.#topLeft,
+      center: this.#left,
+      bottom: this.#bottomLeft,
+    };
   }
 
   transpose() {

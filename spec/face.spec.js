@@ -103,4 +103,28 @@ describe("Face", () => {
       "w",
     ]);
   });
+
+  it("can take bottom", () => {
+    const face = new Face("w");
+    face.setBottom({ left: "a", center: "b", right: "c" });
+    expect(face.takeBottom()).toEqual({ left: "a", center: "b", right: "c" });
+  });
+
+  it("can take top", () => {
+    const face = new Face("w");
+    face.setTop({ left: "a", center: "b", right: "c" });
+    expect(face.takeTop()).toEqual({ left: "a", center: "b", right: "c" });
+  });
+
+  it("can take right", () => {
+    const face = new Face("w");
+    face.setRight({ top: "a", center: "b", bottom: "c" });
+    expect(face.takeRight()).toEqual({ top: "a", center: "b", bottom: "c" });
+  });
+
+  it("can take left", () => {
+    const face = new Face("w");
+    face.setLeft({ top: "a", center: "b", bottom: "c" });
+    expect(face.takeLeft()).toEqual({ top: "a", center: "b", bottom: "c" });
+  });
 });
