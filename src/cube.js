@@ -147,16 +147,25 @@ module.exports = class Cube {
   }
 
   rotate() {
+    this.back.transpose();
+    this.back.transpose();
     const front = this.up;
     const down = this.front;
     const up = this.back;
     const back = this.down;
+    // this.up.transpose();
+    // this.up.transpose();
+    // this.down.transpose();
+    // this.down.transpose();
     this.front = front;
     this.up = up;
     this.down = down;
     this.back = back;
+    // this.back.transpose();
     this.left.transpose();
     this.right.reverseTranspose();
+    this.back.transpose();
+    this.back.transpose();
   }
 
   move(move) {
