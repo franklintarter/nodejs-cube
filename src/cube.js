@@ -12,10 +12,6 @@ module.exports = class Cube {
     this.down = new Face(c.R);
   }
 
-  // solveCross() {
-  //   while (!this.front.isCrossSolved()) {}
-  // }
-
   positionUnsolvedCross() {
     while (this.front.right !== this.front.color) {
       this.turnFront();
@@ -34,6 +30,7 @@ module.exports = class Cube {
   }
 
   // need to test these
+  // needs work
   turnFront() {
     this.rotateRight();
     this.rotateRight();
@@ -43,6 +40,7 @@ module.exports = class Cube {
   }
 
   // need to test these
+  // need work
   turnBack() {
     this.rotateRight();
     this.turnLeft();
@@ -61,18 +59,6 @@ module.exports = class Cube {
     this.rotateRight();
     this.rotateRight();
     this.rotate();
-
-    // this.down.transpose();
-
-    // const right = this.front.takeDown();
-    // const back = this.right.takeDown();
-    // const left = this.back.takeDown();
-    // const front = this.left.takeDown();
-
-    // this.right.setDown(right);
-    // this.left.setDown(left);
-    // this.back.setDown(back);
-    // this.front.setDown(front);
   }
 
   turnUp() {
@@ -85,17 +71,6 @@ module.exports = class Cube {
     this.rotate();
     this.rotate();
     this.rotate();
-
-    // this.up.transpose();
-    // const right = this.back.takeUp();
-    // const back = this.left.takeUp();
-    // const left = this.front.takeUp();
-    // const front = this.right.takeUp();
-
-    // this.right.setUp(right);
-    // this.left.setUp(left);
-    // this.back.setUp(back);
-    // this.front.setUp(front);
   }
 
   turnRight() {
@@ -118,20 +93,7 @@ module.exports = class Cube {
     this.turnRight();
     this.rotateRight();
     this.rotateRight();
-    // this.left.transpose();
-
-    // const front = this.up.takeLeft();
-    // const up = this.back.takeRight();
-    // const back = this.down.takeLeft();
-    // const down = this.front.takeLeft();
-
-    // this.front.setLeft(front);
-    // this.up.setLeft(up);
-    // this.back.setRight(back);
-    // this.down.setLeft(down);
   }
-
-  // TODO turn front turn back
 
   rotateRight() {
     const right = this.front;
@@ -153,15 +115,10 @@ module.exports = class Cube {
     const down = this.front;
     const up = this.back;
     const back = this.down;
-    // this.up.transpose();
-    // this.up.transpose();
-    // this.down.transpose();
-    // this.down.transpose();
     this.front = front;
     this.up = up;
     this.down = down;
     this.back = back;
-    // this.back.transpose();
     this.left.transpose();
     this.right.reverseTranspose();
     this.back.transpose();

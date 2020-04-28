@@ -255,7 +255,7 @@ function twentyfive(cube) {
   writeEndLine(".      ");
 }
 
-module.exports = function (cube, move) {
+module.exports = function (cube) {
   console.clear();
   writeEndLine(
     "        _____________________________________________________________"
