@@ -36,18 +36,18 @@ module.exports = class Cube {
   // need to test these
   turnFront() {
     this.rotateRight();
+    this.rotateRight();
+    this.rotateRight();
     this.turnLeft();
-    this.rotateRight();
-    this.rotateRight();
     this.rotateRight();
   }
 
   // need to test these
   turnBack() {
     this.rotateRight();
-    this.rotateRight();
-    this.rotateRight();
     this.turnLeft();
+    this.rotateRight();
+    this.rotateRight();
     this.rotateRight();
   }
 

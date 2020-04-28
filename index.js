@@ -1,8 +1,5 @@
-const inquirer = require("inquirer");
-
 const Cube = require("./src/cube");
 const render = require("./src/renderer");
-// const { turns } = require("./src/random-moves");
 
 const cube = new Cube();
 
@@ -18,58 +15,11 @@ const cube = new Cube();
 //   }, 1000 * i + 200);
 // });
 
-// cube.turnFront();
-
-// cube.turnDown();
-// cube.turnDown();
-// cube.turnRight();
-// cube.turnRight();
-// cube.rotate();
-// cube.rotate();
-// cube.rotate();
-// cube.rotate();
-// cube.rotate();
-// cube.rotate();
-// cube.rotate();
-// cube.rotate();
-// cube.rotateRight();
-// cube.rotateRight();
-// cube.rotateRight();
-// cube.rotateRight();
-
-// cube.rotateRight();
-// cube.rotateRight();
-// cube.rotateRight();
-
 render(cube);
 // console.log();
 // console.log(cube.front.isCrossSolved());
 
 let running = true;
-
-// function prompt() {
-//   const questions = [
-//     {
-//       name: "username",
-//       type: "list",
-//       message: "Enter your GitHub username or e-mail address:",
-//       choices: ["Rotate Up (up)", "Rotate Down (down)", "Right", "Left"],
-//       validate: function (value) {
-//         if (value.length) {
-//           return true;
-//         } else {
-//           return "Please enter your username or e-mail address.";
-//         }
-//       },
-//     },
-//   ];
-//   return inquirer.prompt(questions);
-// }
-
-// // while (running) {
-// // }
-// const result = prompt();
-// console.log(result);
 
 var stdin = process.stdin;
 
@@ -85,14 +35,22 @@ stdin.setEncoding("utf8");
 
 function printKeys() {
   console.log();
-  console.log("Right  (r)");
-  console.log("Right` (f)");
-  console.log("Up     (e)");
-  console.log("Up     (d)");
-  console.log("Down   (w)");
-  console.log("Down`  (s)");
-  console.log("Left   (q)");
-  console.log("Left`  (a)");
+  console.log("Counter Clockwise          Clockwise");
+  console.log("   Right` (f)                 Right  (j)");
+  console.log("   Up`    (d)                 Up     (k)");
+  console.log("   Down`  (s)                 Down   (l)");
+  console.log("   Left`  (a)                 Left   (;)");
+  console.log("   Front` (r)                 Front  (u)");
+  console.log("   Back`  (e)                 Back   (i)");
+
+  console.log();
+  console.log("~ put hands in typing position for turns.");
+  console.log();
+  console.log("~ arrow keys to rotate.");
+
+  console.log();
+  console.log("quit   (control + c)");
+  console.log();
 }
 
 printKeys();
@@ -102,7 +60,23 @@ stdin.on("data", function (key) {
   // if (key === "")
 
   switch (key) {
+    case "u":
+      cube.turnFront();
+      break;
     case "r":
+      cube.turnFront();
+      cube.turnFront();
+      cube.turnFront();
+      break;
+    case "i":
+      cube.turnBack();
+      break;
+    case "e":
+      cube.turnBack();
+      cube.turnBack();
+      cube.turnBack();
+      break;
+    case "j":
       cube.turnRight();
       break;
     case "f":
@@ -110,7 +84,7 @@ stdin.on("data", function (key) {
       cube.turnRight();
       cube.turnRight();
       break;
-    case "e":
+    case "k":
       cube.turnUp();
       break;
     case "d":
@@ -118,7 +92,7 @@ stdin.on("data", function (key) {
       cube.turnUp();
       cube.turnUp();
       break;
-    case "w":
+    case "l":
       cube.turnDown();
       break;
     case "s":
@@ -126,7 +100,7 @@ stdin.on("data", function (key) {
       cube.turnDown();
       cube.turnDown();
       break;
-    case "q":
+    case ";":
       cube.turnLeft();
       break;
     case "a":
@@ -134,12 +108,26 @@ stdin.on("data", function (key) {
       cube.turnLeft();
       cube.turnLeft();
       break;
+    case "\u001B\u005B\u0041": // up
+      cube.rotate();
+      break;
+    case "\u001B\u005B\u0043": // right
+      cube.rotateRight();
+      break;
+    case "\u001B\u005B\u0042": // down
+      cube.rotate();
+      cube.rotate();
+      cube.rotate();
+      break;
+    case "\u001B\u005B\u0044":
+      cube.rotateRight();
+      cube.rotateRight();
+      cube.rotateRight();
+      break;
+    case "\u0003":
+      process.exit();
   }
 
-  // ctrl-c ( end of text )
-  if (key === "\u0003") {
-    process.exit();
-  }
   // write the key to stdout all normal like
   render(cube);
   printKeys();
