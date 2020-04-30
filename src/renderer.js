@@ -5,7 +5,7 @@ function toHex(color) {
     case c.W:
       return "#EAEDF4";
     case c.B:
-      return "#3E5FAA";
+      return "#1513FC";
     case c.G:
       return "#55D005";
     case c.O:

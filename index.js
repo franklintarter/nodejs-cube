@@ -80,17 +80,18 @@ stdin.on("data", function (key) {
       cube.turnRight();
       break;
     case "f":
-      cube.turnRight();
-      cube.turnRight();
-      cube.turnRight();
+      cube.turnRightPrime();
+      // cube.turnRight();
+      // cube.turnRight();
       break;
     case "k":
       cube.turnUp();
       break;
     case "d":
-      cube.turnUp();
-      cube.turnUp();
-      cube.turnUp();
+      cube.turnUpPrime();
+      // cube.turnUp();
+      // cube.turnUp();
+      // cube.turnUp();
       break;
     case "l":
       cube.turnDown();
@@ -110,13 +111,13 @@ stdin.on("data", function (key) {
       break;
     case "\u001B\u005B\u0041": // up
       cube.rotate();
+      cube.rotate();
+      cube.rotate();
       break;
     case "\u001B\u005B\u0043": // right
       cube.rotateRight();
       break;
     case "\u001B\u005B\u0042": // down
-      cube.rotate();
-      cube.rotate();
       cube.rotate();
       break;
     case "\u001B\u005B\u0044":

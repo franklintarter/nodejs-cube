@@ -9,6 +9,9 @@ module.exports = class Face {
   down;
   downRight;
 
+  flippedX;
+  flippedY;
+
   color;
 
   constructor(color) {
@@ -34,6 +37,41 @@ module.exports = class Face {
     yield this.downLeft;
     yield this.down;
     yield this.downRight;
+  }
+
+  flipX() {
+    const upLeft = this.upLeft;
+    const left = this.left;
+    const downLeft = this.downLeft;
+    const upRight = this.upRight;
+    const right = this.right;
+    const downRight = this.downRight;
+    this.upRight = upLeft;
+    this.right = left;
+    this.downRight = downLeft;
+    this.downLeft = downRight;
+    this.left = right;
+    this.upLeft = upRight;
+    this.flippedX = true;
+  }
+
+  flipY() {
+    this.transpose();
+    this.flipX();
+    this.reverseTranspose();
+    this.flippedX = false;
+    this.flippedY = true;
+  }
+
+  unFlip() {
+    if (this.flippedX) {
+      this.flipX();
+    }
+    if (this.flippedY) {
+      this.flipY();
+    }
+    this.flippedX = false;
+    this.flippedY = false;
   }
 
   sides() {
@@ -70,6 +108,12 @@ module.exports = class Face {
     this.downRight = down;
   }
 
+  setInvertedRight({ up, center, down }) {
+    this.upLeft = down;
+    this.left = center;
+    this.downLeft = up;
+  }
+
   setLeft({ up, center, down }) {
     this.upLeft = up;
     this.left = center;
@@ -97,6 +141,14 @@ module.exports = class Face {
       up: this.upRight,
       center: this.right,
       down: this.downRight,
+    };
+  }
+
+  takeInvertedRight() {
+    return {
+      up: this.downRight,
+      center: this.right,
+      down: this.upRight,
     };
   }
 
