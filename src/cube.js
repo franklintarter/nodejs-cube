@@ -119,9 +119,9 @@ module.exports = class Cube {
 
     this.front.setRight(front);
     this.up.setRight(up);
-    this.back.setRight(back);
-    // this.down.setRight(down);
+    this.back.setRight({ up: back.down, center: back.center, down: back.up });
     this.down.setRight({ up: down.down, center: down.center, down: down.up });
+    // this.down.setRight(down);
   }
 
   turnLeft() {
