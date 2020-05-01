@@ -30,83 +30,47 @@ module.exports = class Cube {
   }
 
   turnFront() {
-    this.rotate();
-    this.rotate();
+    this.rotateDown();
+    this.rotateDown();
     this.turnBack();
-    this.rotate();
-    this.rotate();
+    this.rotateDown();
+    this.rotateDown();
   }
 
   turnBack() {
     this.rotateRight();
     this.turnLeft();
-    this.rotateRight();
-    this.rotateRight();
-    this.rotateRight();
+    this.rotateLeft();
   }
 
   turnDown() {
-    this.rotate();
-    this.rotate();
-    this.rotate();
+    this.rotateUp();
     this.rotateRight();
     this.turnRight();
-    this.rotateRight();
-    this.rotateRight();
-    this.rotateRight();
-    this.rotate();
+    this.rotateLeft();
+    this.rotateDown();
   }
 
   turnUp() {
-    this.rotate();
+    this.rotateDown();
     this.rotateRight();
     this.turnRight();
-    this.rotateRight();
-    this.rotateRight();
-    this.rotateRight();
-    this.rotate();
-    this.rotate();
-    this.rotate();
+    this.rotateLeft();
+    this.rotateUp();
   }
 
   turnUpPrime() {
-    this.rotate();
+    this.rotateDown();
     this.rotateRight();
     this.turnRightPrime();
-    this.rotateRight();
-    this.rotateRight();
-    this.rotateRight();
-    this.rotate();
-    this.rotate();
-    this.rotate();
-
-    // this.rotate();
-    // this.rotateRight();
-    // this.turnRightPrime();
-    // this.rotateRight();
-    // this.rotateRight();
-    // this.rotateRight();
-    // this.rotate();
-    // this.rotate();
-    // this.rotate();
+    this.rotateLeft();
+    this.rotateUp();
   }
 
   turnRightPrime() {
     this.turnRight();
     this.turnRight();
     this.turnRight();
-    // this.right.transpose();
-
-    // const back = this.down.takeRight();
-    // const down = this.front.takeRight();
-    // const front = this.up.takeRight();
-    // const up = this.back.takeLeft();
-
-    // this.front.setRight(front);
-    // this.up.setRight(up);
-    // this.back.setLeft(back);
-    // this.down.setRight(down);
-    // this.down.setRight({ up: down.down, center: down.center, down: down.up });
   }
 
   turnRight() {
@@ -121,7 +85,6 @@ module.exports = class Cube {
     this.up.setRight(up);
     this.back.setRight({ up: back.down, center: back.center, down: back.up });
     this.down.setRight({ up: down.down, center: down.center, down: down.up });
-    // this.down.setRight(down);
   }
 
   turnLeft() {
@@ -132,14 +95,13 @@ module.exports = class Cube {
     this.rotateRight();
   }
 
-  // investigate something off?
-  rotateRight() {
-    // this.back.transpose();
-    // this.back.transpose();
+  rotateLeft() {
+    this.rotateRight();
+    this.rotateRight();
+    this.rotateRight();
+  }
 
-    // this.back.transpose();
-    // this.back.transpose();
-    // this.back.unFlip();
+  rotateRight() {
     this.back.flipX();
 
     const right = this.front;
@@ -156,20 +118,15 @@ module.exports = class Cube {
 
     this.up.reverseTranspose();
     this.down.transpose();
-    // this.back.transpose();
-    // this.back.transpose();
   }
 
-  rotate() {
-    // this.back.transpose();
-    // this.back.transpose();
-    // this.back.transpose();
-    // this.back.transpose();
+  rotateUp() {
+    this.rotateDown();
+    this.rotateDown();
+    this.rotateDown();
+  }
 
-    // this.back.transpose();
-    // this.back.transpose();
-    // this.down.transpose();
-    // this.back.unFlip();
+  rotateDown() {
     this.back.flipY();
 
     const front = this.up;
@@ -182,16 +139,9 @@ module.exports = class Cube {
     this.down = down;
     this.back = back;
 
-    // this.back.transpose();
     this.back.flipY();
-    // this.up.transpose();
-
-    // this.up.transpose();
-    // this.up.transpose();
     this.left.transpose();
     this.right.reverseTranspose();
-    // this.back.transpose();
-    // this.back.transpose();
   }
 
   move(move) {
@@ -212,7 +162,7 @@ module.exports = class Cube {
         this.rotateRight();
         break;
       case moves.ROTATE:
-        this.rotate();
+        this.rotateDown();
         break;
       default:
     }

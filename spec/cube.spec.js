@@ -17,7 +17,7 @@ describe("cube", () => {
     const back = cube.back;
     const up = cube.up;
 
-    cube.rotate();
+    cube.rotateDown();
 
     expect(cube.front.color).toBe(up.color);
     expect(cube.left.color).toBe(left.color);

@@ -79,20 +79,16 @@ stdin.on("data", function (key) {
       cube.turnLeft();
       break;
     case "\u001B\u005B\u0041": // up
-      cube.rotate();
-      cube.rotate();
-      cube.rotate();
+      cube.rotateUp();
       break;
     case "\u001B\u005B\u0043": // right
       cube.rotateRight();
       break;
     case "\u001B\u005B\u0042": // down
-      cube.rotate();
+      cube.rotateDown();
       break;
     case "\u001B\u005B\u0044":
-      cube.rotateRight();
-      cube.rotateRight();
-      cube.rotateRight();
+      cube.rotateLeft();
       break;
     case "\u0003":
       process.exit();
