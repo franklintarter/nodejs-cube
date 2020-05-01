@@ -2,35 +2,12 @@ const Cube = require("./src/cube");
 const render = require("./src/renderer");
 
 const cube = new Cube();
-
-// cube.randomize();
-
-// const randomTurns = turns(50);
-// randomTurns.forEach((m, i) => {
-//   setTimeout(() => {
-//     cube.move(m);
-//     render(cube);
-//     console.log();
-//     console.log(m);
-//   }, 1000 * i + 200);
-// });
-
 render(cube);
-// console.log();
-// console.log(cube.front.isCrossSolved());
-
-let running = true;
 
 var stdin = process.stdin;
 
-// without this, we would only get streams once enter is pressed
 stdin.setRawMode(true);
-
-// resume stdin in the parent process (node app won't quit all by itself
-// unless an error or process.exit() happens)
 stdin.resume();
-
-// i don't want binary, do you?
 stdin.setEncoding("utf8");
 
 function printKeys() {
@@ -55,10 +32,7 @@ function printKeys() {
 
 printKeys();
 
-// on any data into stdin
 stdin.on("data", function (key) {
-  // if (key === "")
-
   switch (key) {
     case "u":
       cube.turnFront();
@@ -81,17 +55,12 @@ stdin.on("data", function (key) {
       break;
     case "f":
       cube.turnRightPrime();
-      // cube.turnRight();
-      // cube.turnRight();
       break;
     case "k":
       cube.turnUp();
       break;
     case "d":
       cube.turnUpPrime();
-      // cube.turnUp();
-      // cube.turnUp();
-      // cube.turnUp();
       break;
     case "l":
       cube.turnDown();
@@ -129,9 +98,6 @@ stdin.on("data", function (key) {
       process.exit();
   }
 
-  // write the key to stdout all normal like
   render(cube);
   printKeys();
-
-  // process.stdout.write(key);
 });
