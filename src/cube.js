@@ -29,50 +29,6 @@ module.exports = class Cube {
     );
   }
 
-  turnFront() {
-    this.rotateDown();
-    this.rotateDown();
-    this.turnBack();
-    this.rotateDown();
-    this.rotateDown();
-  }
-
-  turnBack() {
-    this.rotateRight();
-    this.turnLeft();
-    this.rotateLeft();
-  }
-
-  turnDown() {
-    this.rotateUp();
-    this.rotateRight();
-    this.turnRight();
-    this.rotateLeft();
-    this.rotateDown();
-  }
-
-  turnUp() {
-    this.rotateDown();
-    this.rotateRight();
-    this.turnRight();
-    this.rotateLeft();
-    this.rotateUp();
-  }
-
-  turnUpPrime() {
-    this.rotateDown();
-    this.rotateRight();
-    this.turnRightPrime();
-    this.rotateLeft();
-    this.rotateUp();
-  }
-
-  turnRightPrime() {
-    this.turnRight();
-    this.turnRight();
-    this.turnRight();
-  }
-
   turnRight() {
     this.right.transpose();
 
@@ -87,12 +43,78 @@ module.exports = class Cube {
     this.down.setRight({ up: down.down, center: down.center, down: down.up });
   }
 
+  turnRightPrime() {
+    this.turnRight();
+    this.turnRight();
+    this.turnRight();
+  }
+
+  turnFront() {
+    this.rotateDown();
+    this.rotateDown();
+    this.turnBack();
+    this.rotateDown();
+    this.rotateDown();
+  }
+
+  turnFrontPrime() {
+    this.turnFront();
+    this.turnFront();
+    this.turnFront();
+  }
+
+  turnBack() {
+    this.rotateRight();
+    this.turnLeft();
+    this.rotateLeft();
+  }
+
+  turnBackPrime() {
+    this.turnBack();
+    this.turnBack();
+    this.turnBack();
+  }
+
+  turnDown() {
+    this.rotateUp();
+    this.rotateRight();
+    this.turnRight();
+    this.rotateLeft();
+    this.rotateDown();
+  }
+
+  turnDownPrime() {
+    this.turnDown();
+    this.turnDown();
+    this.turnDown();
+  }
+
+  turnUp() {
+    this.rotateDown();
+    this.rotateRight();
+    this.turnRight();
+    this.rotateLeft();
+    this.rotateUp();
+  }
+
+  turnUpPrime() {
+    this.turnUp();
+    this.turnUp();
+    this.turnUp();
+  }
+
   turnLeft() {
     this.rotateRight();
     this.rotateRight();
     this.turnRight();
     this.rotateRight();
     this.rotateRight();
+  }
+
+  turnLeftPrime() {
+    this.turnLeft();
+    this.turnLeft();
+    this.turnLeft();
   }
 
   rotateLeft() {

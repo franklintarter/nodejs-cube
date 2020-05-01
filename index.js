@@ -38,17 +38,13 @@ stdin.on("data", function (key) {
       cube.turnFront();
       break;
     case "r":
-      cube.turnFront();
-      cube.turnFront();
-      cube.turnFront();
+      cube.turnFrontPrime();
       break;
     case "i":
       cube.turnBack();
       break;
     case "e":
-      cube.turnBack();
-      cube.turnBack();
-      cube.turnBack();
+      cube.turnBackPrime();
       break;
     case "j":
       cube.turnRight();
@@ -66,17 +62,13 @@ stdin.on("data", function (key) {
       cube.turnDown();
       break;
     case "s":
-      cube.turnDown();
-      cube.turnDown();
-      cube.turnDown();
+      cube.turnDownPrime();
       break;
     case ";":
       cube.turnLeft();
       break;
     case "a":
-      cube.turnLeft();
-      cube.turnLeft();
-      cube.turnLeft();
+      cube.turnLeftPrime();
       break;
     case "\u001B\u005B\u0041": // up
       cube.rotateUp();
