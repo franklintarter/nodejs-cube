@@ -23,7 +23,14 @@ function printKeys() {
   console.log();
   console.log("~ put hands in typing position for turns.");
   console.log();
-  console.log("~ arrow keys to rotate.");
+  console.log();
+  console.log("~ arrow keys to turn.");
+  console.log("~ [ and ] to rotate");
+
+  console.log("Algorithm Shortcuts");
+  console.log("Rotate Top Right Corner (1)");
+  console.log("Second Layer Right (2)");
+  console.log("Second Layer Left (3)");
 
   console.log();
   console.log("quit   (control + c)");
@@ -81,6 +88,38 @@ stdin.on("data", function (key) {
       break;
     case "\u001B\u005B\u0044":
       cube.rotateLeft();
+      break;
+    case "]":
+      cube.orientRight();
+      break;
+    case "[":
+      cube.orientLeft();
+      break;
+    case "1":
+      cube.turnUpPrime();
+      cube.turnBackPrime();
+      cube.turnUp();
+      cube.turnBack();
+      break;
+    case "2":
+      cube.turnUp();
+      cube.turnRight();
+      cube.turnUpPrime();
+      cube.turnRightPrime();
+      cube.turnUpPrime();
+      cube.turnFrontPrime();
+      cube.turnUp();
+      cube.turnFront();
+      break;
+    case "3":
+      cube.turnUpPrime();
+      cube.turnLeftPrime();
+      cube.turnUp();
+      cube.turnLeft();
+      cube.turnUp();
+      cube.turnFront();
+      cube.turnUpPrime();
+      cube.turnFrontPrime();
       break;
     case "\u0003":
       process.exit();

@@ -166,6 +166,18 @@ module.exports = class Cube {
     this.right.reverseTranspose();
   }
 
+  orientRight() {
+    this.rotateLeft();
+    this.rotateDown();
+    this.rotateRight();
+  }
+
+  orientLeft() {
+    this.rotateRight();
+    this.rotateDown();
+    this.rotateLeft();
+  }
+
   move(move) {
     switch (move) {
       case moves.TURN_DOWN:
