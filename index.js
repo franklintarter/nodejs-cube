@@ -4,7 +4,8 @@ const render = require("./src/renderer");
 const cube = new Cube();
 render(cube);
 
-var stdin = process.stdin;
+// eslint-disable-next-line
+const stdin = process.stdin;
 
 stdin.setRawMode(true);
 stdin.resume();
@@ -22,15 +23,18 @@ function printKeys() {
 
   console.log();
   console.log("~ put hands in typing position for turns.");
-  console.log();
-  console.log();
-  console.log("~ arrow keys to turn.");
+  console.log("~ arrow keys to flip sides.");
   console.log("~ [ and ] to rotate");
 
+  console.log();
   console.log("Algorithm Shortcuts");
-  console.log("Rotate Top Right Corner (1)");
-  console.log("Second Layer Right (2)");
-  console.log("Second Layer Left (3)");
+  console.log("Rotate Top Right Corner  (1)");
+  console.log("Second Layer Right       (2)");
+  console.log("Second Layer Left        (3)");
+  console.log("Third Layer Cross        (4)");
+  console.log("Third Edges Cross        (5)");
+  console.log("Place Top Corners        (6)");
+  console.log("Orient Top Corners       (7)");
 
   console.log();
   console.log("quit   (control + c)");
@@ -121,7 +125,43 @@ stdin.on("data", function (key) {
       cube.turnUpPrime();
       cube.turnFrontPrime();
       break;
+    case "4":
+      cube.turnFront();
+      cube.turnRight();
+      cube.turnUp();
+      cube.turnRightPrime();
+      cube.turnUpPrime();
+      cube.turnFrontPrime();
+      break;
+    case "5":
+      cube.turnRight();
+      cube.turnUp();
+      cube.turnRightPrime();
+      cube.turnUp();
+      cube.turnRight();
+      cube.turnUp();
+      cube.turnUp();
+      cube.turnUpPrime();
+      cube.turnUp();
+      break;
+    case "6":
+      cube.turnUp();
+      cube.turnRight();
+      cube.turnUpPrime();
+      cube.turnLeftPrime();
+      cube.turnUp();
+      cube.turnRightPrime();
+      cube.turnUpPrime();
+      cube.turnLeft();
+      break;
+    case "7":
+      cube.turnUpPrime();
+      cube.turnDownPrime();
+      cube.turnRight();
+      cube.turnDown();
+      break;
     case "\u0003":
+      // eslint-disable-next-line
       process.exit();
   }
 
