@@ -141,7 +141,7 @@ stdin.on("data", function (key) {
       cube.turnRight();
       cube.turnUp();
       cube.turnUp();
-      cube.turnUpPrime();
+      cube.turnRightPrime();
       cube.turnUp();
       break;
     case "6":
@@ -155,7 +155,7 @@ stdin.on("data", function (key) {
       cube.turnLeft();
       break;
     case "7":
-      cube.turnUpPrime();
+      cube.turnRightPrime();
       cube.turnDownPrime();
       cube.turnRight();
       cube.turnDown();
