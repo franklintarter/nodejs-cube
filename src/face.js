@@ -63,16 +63,16 @@ module.exports = class Face {
     this.flippedY = true;
   }
 
-  unFlip() {
-    if (this.flippedX) {
-      this.flipX();
-    }
-    if (this.flippedY) {
-      this.flipY();
-    }
-    this.flippedX = false;
-    this.flippedY = false;
-  }
+  // unFlip() {
+  //   if (this.flippedX) {
+  //     this.flipX();
+  //   }
+  //   if (this.flippedY) {
+  //     this.flipY();
+  //   }
+  //   this.flippedX = false;
+  //   this.flippedY = false;
+  // }
 
   sides() {
     return [this.up, this.left, this.right, this.down];
@@ -90,17 +90,17 @@ module.exports = class Face {
     return Array.from(this);
   }
 
-  setUp({ left, center, right }) {
-    this.upLeft = left;
-    this.up = center;
-    this.upRight = right;
-  }
+  // setUp({ left, center, right }) {
+  //   this.upLeft = left;
+  //   this.up = center;
+  //   this.upRight = right;
+  // }
 
-  setDown({ left, center, right }) {
-    this.downLeft = left;
-    this.down = center;
-    this.downRight = right;
-  }
+  // setDown({ left, center, right }) {
+  //   this.downLeft = left;
+  //   this.down = center;
+  //   this.downRight = right;
+  // }
 
   setRight({ up, center, down }) {
     this.upRight = up;
@@ -108,33 +108,33 @@ module.exports = class Face {
     this.downRight = down;
   }
 
-  setInvertedRight({ up, center, down }) {
-    this.upLeft = down;
-    this.left = center;
-    this.downLeft = up;
-  }
+  // setInvertedRight({ up, center, down }) {
+  //   this.upLeft = down;
+  //   this.left = center;
+  //   this.downLeft = up;
+  // }
 
-  setLeft({ up, center, down }) {
-    this.upLeft = up;
-    this.left = center;
-    this.downLeft = down;
-  }
+  // setLeft({ up, center, down }) {
+  //   this.upLeft = up;
+  //   this.left = center;
+  //   this.downLeft = down;
+  // }
 
-  takeDown() {
-    return {
-      left: this.downLeft,
-      center: this.down,
-      right: this.downRight,
-    };
-  }
+  // takeDown() {
+  //   return {
+  //     left: this.downLeft,
+  //     center: this.down,
+  //     right: this.downRight,
+  //   };
+  // }
 
-  takeUp() {
-    return {
-      left: this.upLeft,
-      center: this.up,
-      right: this.upRight,
-    };
-  }
+  // takeUp() {
+  //   return {
+  //     left: this.upLeft,
+  //     center: this.up,
+  //     right: this.upRight,
+  //   };
+  // }
 
   takeRight() {
     return {
@@ -144,21 +144,21 @@ module.exports = class Face {
     };
   }
 
-  takeInvertedRight() {
-    return {
-      up: this.downRight,
-      center: this.right,
-      down: this.upRight,
-    };
-  }
+  // takeInvertedRight() {
+  //   return {
+  //     up: this.downRight,
+  //     center: this.right,
+  //     down: this.upRight,
+  //   };
+  // }
 
-  takeLeft() {
-    return {
-      up: this.upLeft,
-      center: this.left,
-      down: this.downLeft,
-    };
-  }
+  // takeLeft() {
+  //   return {
+  //     up: this.upLeft,
+  //     center: this.left,
+  //     down: this.downLeft,
+  //   };
+  // }
 
   transpose() {
     const nextUpLeft = this.downLeft;
